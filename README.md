@@ -64,8 +64,6 @@ pet MBTI/
 ├─ assets/
 │  ├─ css/
 │  │  └─ styles.css
-│  ├─ images/
-│  │  └─ mbti-grid.png
 │  └─ js/
 │     ├─ mbti-data.js
 │     ├─ quiz.js

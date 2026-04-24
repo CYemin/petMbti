@@ -6,27 +6,48 @@
     <title>宠物 MBTI | 在线测试你家毛孩子的人格类型</title>
     <meta
       name="description"
-      content="进入首页即可开始宠物 MBTI 在线测试。移动端友好，一题一题作答，生成宠物专属昵称、性格分析和主人陪伴建议。"
+      content="上传毛孩子照片并完成宠物 MBTI 测试，获得宠物人格结果、海报风结果页和主人陪伴建议。"
     />
     <link rel="stylesheet" href="./assets/css/styles.css" />
   </head>
   <body data-page="home">
     <div class="page-shell">
       <main>
-        <section class="hero hero-minimal">
-          <div class="container narrow hero-minimal-wrap">
-            <div class="stage-stack quiz-shell" id="quiz-app" data-quiz-root>
-              <div class="landing-cover panel-card" data-landing-cover>
-                <span class="eyebrow">宠物 MBTI</span>
-                <h1>测测你家毛孩子是什么 MBTI。</h1>
-                <div class="hero-actions">
-                  <button class="button button-primary button-large" type="button" data-start-quiz>
-                    开始测试
-                  </button>
+        <section class="hero hero-form">
+          <div class="container narrow hero-form-wrap">
+            <div class="quiz-shell" id="quiz-app" data-quiz-root>
+              <form class="wizard-card panel-card is-visible" data-quiz-form novalidate>
+                <div class="intro-heading">
+                  <span class="eyebrow">宠物 MBTI</span>
+                  <h1>先填毛孩子信息，再开始测试。</h1>
+                  <p class="hero-text">照片可以不上传，直接填写名字和类型后继续答题。</p>
                 </div>
-              </div>
 
-              <form class="wizard-card panel-card" data-quiz-form hidden novalidate>
+                <div class="upload-stack" data-basic-media>
+                  <label class="upload-label" for="pet-photo-input">选择毛孩子照片（可选）</label>
+                  <input
+                    class="sr-only"
+                    id="pet-photo-input"
+                    type="file"
+                    accept="image/*"
+                    data-pet-photo-input
+                  />
+                  <label class="upload-dropzone" for="pet-photo-input">
+                    <div class="upload-empty" data-photo-empty>
+                      <span class="upload-cta">选择照片</span>
+                      <small>不上传也可以直接进行测试</small>
+                    </div>
+                    <div class="upload-filled" data-photo-preview hidden>
+                      <img class="upload-preview-image" data-photo-preview-image alt="已上传的毛孩子照片预览" />
+                      <div class="upload-filled-copy">
+                        <strong>已上传照片</strong>
+                        <p class="upload-preview-name" data-photo-preview-name></p>
+                        <small>点击重新选择</small>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+
                 <div class="wizard-progress">
                   <div class="wizard-progress-top">
                     <p class="step-kicker" data-step-kicker>准备信息</p>
@@ -41,7 +62,7 @@
 
                 <div class="wizard-actions">
                   <button class="button button-ghost" type="button" data-prev-step>上一题</button>
-                  <button class="button button-primary" type="submit" data-next-step>下一步</button>
+                  <button class="button button-primary" type="submit" data-next-step>开始答题</button>
                 </div>
               </form>
 
