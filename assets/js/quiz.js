@@ -11,6 +11,8 @@ if (quizRoot) {
 }
 
 function initQuiz() {
+  const landingCover = document.querySelector("[data-landing-cover]");
+  const startButton = document.querySelector("[data-start-quiz]");
   const form = document.querySelector("[data-quiz-form]");
   const basicMedia = document.querySelector("[data-basic-media]");
   const stepContent = document.querySelector("[data-step-content]");
@@ -29,6 +31,8 @@ function initQuiz() {
   const photoPreviewName = document.querySelector("[data-photo-preview-name]");
 
   if (
+    !landingCover ||
+    !startButton ||
     !form ||
     !stepContent ||
     !resultPanel ||
@@ -65,6 +69,8 @@ function initQuiz() {
 
   renderStep();
   syncPhotoPreview();
+
+  form.hidden = true;
 
   photoInput.addEventListener("change", function (event) {
     const target = event.target;
@@ -120,15 +126,21 @@ function initQuiz() {
     goNext();
   });
 
+  startButton.addEventListener("click", function () {
+    landingCover.hidden = true;
+    form.hidden = false;
+    form.classList.add("is-visible");
+    renderStep();
+  });
+
   restartButton.addEventListener("click", function () {
     state.step = 0;
     state.answers = {};
     state.questionSet = createQuestionSet();
     state.lastResult = null;
     resultPanel.hidden = true;
-    form.hidden = false;
-    form.classList.add("is-visible");
-    renderStep();
+    form.hidden = true;
+    landingCover.hidden = false;
     quizRoot.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 

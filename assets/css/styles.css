@@ -160,6 +160,44 @@ select {
   width: 100%;
 }
 
+.landing-cover {
+  min-height: 72vh;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 26px;
+  padding: 20px 12px;
+  text-align: center;
+}
+
+.landing-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 168, 204, 0.38);
+  background: rgba(255, 255, 255, 0.82);
+  color: #cb5d91;
+  font-size: 1.05rem;
+  font-weight: 800;
+  box-shadow: 0 16px 34px rgba(255, 181, 210, 0.12);
+}
+
+.landing-title {
+  max-width: 12ch;
+  margin: 0;
+  color: #2f2447;
+  font-size: clamp(2.7rem, 7vw, 4.3rem);
+  line-height: 1.16;
+  letter-spacing: -0.05em;
+}
+
+.landing-button {
+  min-width: 176px;
+}
+
 .intro-heading {
   display: grid;
   gap: 12px;
@@ -874,6 +912,11 @@ select {
     min-height: 100svh;
   }
 
+  .landing-cover {
+    min-height: 64vh;
+    gap: 22px;
+  }
+
   .hero-focus {
     padding-top: 52px;
   }
@@ -892,7 +935,8 @@ select {
 
   .hero-copy h1,
   .hero-inner h1,
-  .redirect-card h1 {
+  .redirect-card h1,
+  .landing-title {
     font-size: clamp(2rem, 10vw, 2.9rem);
   }
 
