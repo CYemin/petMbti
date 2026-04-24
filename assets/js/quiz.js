@@ -1,4 +1,4 @@
-import { AXIS_META, QUESTION_BANK, TYPE_PROFILES } from "./mbti-data.js";
+import { AXIS_META, QUESTION_BANK_BY_TYPE, TYPE_PROFILES } from "./mbti-data.js";
 
 const POSTER_LINK = "https://cyemin.github.io/petMbti/";
 const RESULT_OBSERVATION_TEXT =
@@ -63,7 +63,7 @@ function initQuiz() {
       name: "",
     },
     answers: {},
-    questionSet: createQuestionSet(),
+    questionSet: createQuestionSet("哈基咪"),
     lastResult: null,
   };
 
@@ -136,7 +136,7 @@ function initQuiz() {
   restartButton.addEventListener("click", function () {
     state.step = 0;
     state.answers = {};
-    state.questionSet = createQuestionSet();
+    state.questionSet = createQuestionSet("哈基咪");
     state.lastResult = null;
     resultPanel.hidden = true;
     form.hidden = true;
@@ -191,7 +191,7 @@ function initQuiz() {
             <span>宠物类型</span>
             <select name="petType" required>
               ${renderSelectOptions(
-                ["", "猫咪", "狗狗", "兔兔", "仓鼠", "其他毛孩子"],
+                ["", "哈基咪", "哈基汪"],
                 state.basics.petType
               )}
             </select>
@@ -369,6 +369,9 @@ function initQuiz() {
     }
 
     if (state.step < state.questionSet.length) {
+      if (state.step === 0) {
+        state.questionSet = createQuestionSet(state.basics.petType);
+      }
       state.step += 1;
       renderStep();
       return;
@@ -410,8 +413,8 @@ function initQuiz() {
   }
 }
 
-function createQuestionSet() {
-  return QUESTION_BANK.map(function (question) {
+function createQuestionSet(petType) {
+  return getQuestionBankForType(petType).map(function (question) {
     return {
       ...question,
       title: pickRandom(question.prompts),
@@ -471,9 +474,9 @@ function buildTips(type, basics) {
     owner: [
       axisTips[0],
       axisTips[2],
-      basics.petType === "猫咪"
+      basics.petType === "哈基咪"
         ? "如果它偏慢热或结构感强，记得准备稳定躲藏点、高处休息位和可预期的互动距离。"
-        : "如果它互动需求高，可以把陪玩拆成短而频的几轮，能比一次玩太久更舒服。",
+        : "如果它互动需求高，可以把遛弯、陪玩和训练拆成短而频的几轮，通常会更舒服。",
       "如果最近行为和这份画像差异特别大，优先排查健康、环境压力和作息变化。",
     ],
     play: [
@@ -492,15 +495,19 @@ function buildTags(type, profile, basics) {
 }
 
 function getLeftPole(dimension) {
-  return QUESTION_BANK.find(function (question) {
+  return getQuestionBankForType("哈基咪").find(function (question) {
     return question.dimension === dimension;
   }).leftPole;
 }
 
 function getRightPole(dimension) {
-  return QUESTION_BANK.find(function (question) {
+  return getQuestionBankForType("哈基咪").find(function (question) {
     return question.dimension === dimension;
   }).rightPole;
+}
+
+function getQuestionBankForType(petType) {
+  return QUESTION_BANK_BY_TYPE[petType] || QUESTION_BANK_BY_TYPE["哈基咪"];
 }
 
 function renderPetVisual(state) {
