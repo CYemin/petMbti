@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>宠物 MBTI | 在线测试你家毛孩子的人格类型</title>
+    <meta
+      name="description"
+      content="进入首页即可开始宠物 MBTI 在线测试。移动端友好，一题一题作答，生成宠物专属昵称、性格分析和主人陪伴建议。"
+    />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+  </head>
+  <body data-page="home">
+    <div class="page-shell">
+      <main>
+        <section class="hero hero-minimal">
+          <div class="container narrow hero-minimal-wrap">
+            <div class="stage-stack quiz-shell" id="quiz-app" data-quiz-root>
+              <div class="landing-cover panel-card" data-landing-cover>
+                <span class="eyebrow">宠物 MBTI</span>
+                <h1>测测你家毛孩子是什么 MBTI。</h1>
+                <div class="hero-actions">
+                  <button class="button button-primary button-large" type="button" data-start-quiz>
+                    开始测试
+                  </button>
+                </div>
+              </div>
+
+              <form class="wizard-card panel-card" data-quiz-form hidden novalidate>
+                <div class="wizard-progress">
+                  <div class="wizard-progress-top">
+                    <p class="step-kicker" data-step-kicker>准备信息</p>
+                    <p class="step-count" data-step-count>第 1 / 13 步</p>
+                  </div>
+                  <div class="progress-track" aria-hidden="true">
+                    <div class="progress-fill" data-progress-fill></div>
+                  </div>
+                </div>
+
+                <div class="wizard-content" data-step-content></div>
+
+                <div class="wizard-actions">
+                  <button class="button button-ghost" type="button" data-prev-step>上一题</button>
+                  <button class="button button-primary" type="submit" data-next-step>下一步</button>
+                </div>
+              </form>
+
+              <section class="result-panel panel-card" data-result-panel hidden>
+                <span class="eyebrow">测试结果</span>
+                <div data-result-content></div>
+                <div class="result-actions">
+                  <button class="button button-primary" type="button" data-restart-quiz>
+                    重新测试
+                  </button>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./assets/js/site.js"></script>
+    <script type="module" src="./assets/js/quiz.js"></script>
+  </body>
+</html>
