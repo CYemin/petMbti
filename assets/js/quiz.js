@@ -270,6 +270,7 @@ function initQuiz() {
           </div>
           <div class="poster-copy">
             <span class="poster-kicker">毛孩子人格海报</span>
+            <p class="result-name">${state.basics.petName}</p>
             <h2 class="poster-title">${letters}</h2>
             <p class="poster-nickname">${profile.nickname}</p>
             <p class="poster-plain">${profile.plainTalk}</p>
